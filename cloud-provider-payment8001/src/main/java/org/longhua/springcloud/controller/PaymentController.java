@@ -16,7 +16,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping(value = "/insertpayment")
-    public CommonResult insertPayment(Payment payment){
+    public CommonResult insertPayment(@RequestBody Payment payment){
         int count = paymentService.insert(payment);
         if(count>0){
             log.info("支付插入成功");

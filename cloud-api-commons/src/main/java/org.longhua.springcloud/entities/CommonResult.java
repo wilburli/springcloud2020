@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonResult{
+public class CommonResult<T>{
 
     private Integer status;
 
     private String msg;
 
-    private Object data;
+    private T data;
 
     public CommonResult(Integer status,String msg){
          this(status,msg,null);
