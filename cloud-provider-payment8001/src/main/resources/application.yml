@@ -18,8 +18,8 @@ eureka:
 
     fetch-registry: true # 是否从Eureka Server抓取以有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合Ribbon使用负载均衡
     service-url:
-      defaultZone: http://localhost:7001/eureka
-#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
   instance:
     instance-id: payment8001
     # 访问路径可以查看ip地址
