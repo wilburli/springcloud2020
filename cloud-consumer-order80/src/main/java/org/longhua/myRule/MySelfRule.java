@@ -1,4 +1,4 @@
-package org.longhua.springcloud.myRule;
+package org.longhua.myRule;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
