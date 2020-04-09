@@ -21,3 +21,12 @@ eureka:
     lease-renewal-interval-in-seconds: 30
     # 最大续约时间
     lease-expiration-duration-in-seconds: 90
+# 设置feign客户端超时时间
+ribbon:
+# 建立连接后从服务器获取资源的时间
+  ReadTimeout: 5000
+# 建立连接使用时间
+  ConnectTimeout: 5000
+logging:
+  level:
+    org.longhua.springcloud.service.PaymentFeignService: debug

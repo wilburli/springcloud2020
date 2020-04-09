@@ -3,6 +3,7 @@ package org.longhua.springcloud.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.longhua.springcloud.entities.CommonResult;
 import org.longhua.springcloud.entities.Payment;
+import org.longhua.springcloud.service.PaymentFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private PaymentFeignService paymentFeignService;
+
     @GetMapping("/consumer/payment/insertpayment")
     public CommonResult<Payment> create(Payment payment){
         return restTemplate.postForObject(PAYMENT_URL+"/payment/insertpayment",payment,CommonResult.class);
@@ -29,6 +33,13 @@ public class OrderController {
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
         System.out.println("id"+id);
         return restTemplate.getForObject(PAYMENT_URL+"/payment/selectByPrimaryKey/"+id,CommonResult.class);
+
+    }
+
+    @GetMapping("/consumer/paymentFeign/selectByPrimaryKey/{id}")
+    public CommonResult<Payment> getPaymentFeign(@PathVariable("id") Long id){
+        System.out.println("feignid"+id);
+        return paymentFeignService.getPayment(id);
 
     }
 
