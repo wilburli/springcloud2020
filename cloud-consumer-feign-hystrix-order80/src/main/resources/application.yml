@@ -30,3 +30,7 @@ ribbon:
 logging:
   level:
     org.longhua.springcloud.service.OrderService: debug
+
+feign:
+  hystrix:
+    enabled: true
