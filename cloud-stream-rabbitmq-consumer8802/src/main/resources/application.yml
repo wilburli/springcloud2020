@@ -1,0 +1,41 @@
+server:
+  port: 8802
+
+
+spring:
+  application:
+    name: cloud-stream-consumer
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        input:
+          destination: studyExchange
+          content-type: application/json
+          binder: defaultRabbit
+          group: longhuaA
+# mq中同一个组是竞争关系，只有一个可以消费。不同组会重复消费
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+  instance:
+    instance-id: receive-8802.com
+    # 访问路径可以查看ip地址
+    prefer-ip-address: true
+    # Eureka 客户端向服务端发送心跳的时间间隔，单位为秒（默认是30秒）
+    lease-renewal-interval-in-seconds: 30
+    # 最大续约时间
+    lease-expiration-duration-in-seconds: 90

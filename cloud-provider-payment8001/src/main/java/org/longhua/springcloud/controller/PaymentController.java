@@ -60,4 +60,10 @@ public class PaymentController {
 
     }
 
+
+    @GetMapping(value = "/payment/zipkin")
+    public String zipkin(){
+
+        return "zipkin test";
+    }
 }

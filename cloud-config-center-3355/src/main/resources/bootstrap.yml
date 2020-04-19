@@ -11,7 +11,11 @@ spring:
       name: config
       profile: dev
       uri: http://localhost:3344
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
@@ -19,6 +23,10 @@ eureka:
 
 # 客户端需要发送post请求激活变更
 # curl -X POST "http://localhost:3355/actuator/refresh"
+# 定点通知配置中心  config-client:3355
+# curl -X POST "http://localhost:3344/actuator/refresh/{destination}"
+# 定点通知配置中心到3355
+#curl -X POST "http://localhost:3344/actuator/refresh/config-client:3355
 
 # 暴露监控端点
 management:
