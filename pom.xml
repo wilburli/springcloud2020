@@ -23,6 +23,8 @@
       <module>cloud-stream-rabbitmq-provider8801</module>
       <module>cloud-stream-rabbitmq-consumer8802</module>
       <module>cloudalibaba-provider-payment9001</module>
+    <module>cloudalibaba-consumer-nacos-order83</module>
+      <module>cloudalibaba-config-nacos-center3377</module>
   </modules>
   <packaging>pom</packaging>
 <!-- 统一属性配置 -->
