@@ -26,6 +26,9 @@
     <module>cloudalibaba-consumer-nacos-order83</module>
       <module>cloudalibaba-config-nacos-center3377</module>
       <module>cloudalibaba-sentinel-service8401</module>
+      <module>seata-order-service2001</module>
+    <module>seata-storage-service2002</module>
+      <module>seata-account-service2003</module>
   </modules>
   <packaging>pom</packaging>
 <!-- 统一属性配置 -->
@@ -40,6 +43,7 @@
     <druid.version>1.1.16</druid.version>
     <druid.spring.boot.starter.version>1.1.10</druid.spring.boot.starter.version>
     <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
+    <mybatis-plus-boot-starter>3.3.1</mybatis-plus-boot-starter>
   </properties>
 
   <!-- 父类统一锁定子模块版本 确定version和scope -->

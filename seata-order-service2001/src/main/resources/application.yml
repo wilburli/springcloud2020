@@ -1,0 +1,51 @@
+
+server:
+  port: 2001
+spring:
+  application:
+    name: seata-order-service
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource #当前数据源操作类型
+      driver-class-name: com.mysql.jdbc.Driver #mysql驱动包
+      url: jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        tx-service-group: abc_tx_group
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+        datasource:
+          ds1:
+            nacos:
+              server-addr: localhost:8848
+              dataId: seata-order-service
+              groupId: DEFAULT_GROUP
+              data_type: json
+              rule_type: flow
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+feign:
+  hystrix:
+    enabled: true
+
+mybatis-plus:
+  # 实体类的存放路径
+  type-aliases-package: org.longhua.cloud.domain
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+   io:
+    seata: info
+

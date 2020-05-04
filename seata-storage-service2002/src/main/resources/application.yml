@@ -1,0 +1,49 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: seate-storage-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/storage?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        tx-service-group: abc_tx_group
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+        datasource:
+          ds1:
+            nacos:
+              server-addr: localhost:8848
+              dataId: seata-storage-service
+              groupId: DEFAULT_GROUP
+              data_type: json
+              rule_type: flow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+feign:
+  hystrix:
+    enabled: true
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.longhua.cloud.domain
+logging:
+  level:
+    io:
+      seata: info
+
+
+
